@@ -1,18 +1,27 @@
 function fn() {
-  var env = karate.env; // get system property 'karate.env'
+  var env = karate.env;
+ var baseURLReqRes = ''
+
   karate.log('karate.env system property was:', env);
   if (!env) {
     env = 'dev';
   }
-  var config = {
+
+
+  if (env == 'dev') {
+    baseURLReqRes = 'https://reqres.in'
+
+  } else if (env == 'cert') {
+
+ baseURLReqRes = 'https://reqres.in'
+  }
+
+var config = {
     env: env,
+    baseURLReqRes : baseURLReqRes,
     myVarName: 'someValue'
   }
-  if (env == 'dev') {
-    // customize
-    // e.g. config.foo = 'bar';
-  } else if (env == 'e2e') {
-    // customize
-  }
+
+
   return config;
 }
